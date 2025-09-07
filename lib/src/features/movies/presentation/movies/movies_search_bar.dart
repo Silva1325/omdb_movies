@@ -27,7 +27,7 @@ class _SearchBarState extends ConsumerState<MoviesSearchBar> {
       height: 90,
       child: Center(
         child: Container(
-          margin: EdgeInsets.symmetric(vertical: AppSizes.md, horizontal: AppSizes.md),
+          margin: EdgeInsets.all(AppSizes.md),
           decoration: BoxDecoration(
             color: theme.colorScheme.surfaceContainer,
             borderRadius: const BorderRadius.all(Radius.circular(AppSizes.borderRadiusLg)),

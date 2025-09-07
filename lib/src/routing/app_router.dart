@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../features/movies/presentation/movie_details/movie_details_screen.dart';
 import '../features/movies/presentation/movies/movies_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'app_router.g.dart';
@@ -23,6 +24,17 @@ GoRouter goRouter(Ref ref){
           key: state.pageKey,
           child: MoviesScreen()
         ),
+        routes: [
+          GoRoute(
+            path: '/:movie_id',
+            name: AppRoute.movie.name,
+            pageBuilder: (context, state) =>
+              NoTransitionPage(
+                key: state.pageKey,
+                child: MovieDetailsScreen(movieId: state.pathParameters['movie_id'] ?? '',)
+              )
+          ),
+        ]
       ),
     ],
   );

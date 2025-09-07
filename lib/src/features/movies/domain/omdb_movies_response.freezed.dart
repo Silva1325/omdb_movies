@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OMDBMoviesResponse {
 
-@JsonKey(name: 'Search') List<OMDBMovie>? get search;@JsonKey(name: 'totalResults') String? get totalResults;@JsonKey(name: 'Error') String? get error;
+@JsonKey(name: 'Search') List<OMDBMovie>? get search;@JsonKey(name: 'totalResults') String? get totalResults;
 /// Create a copy of OMDBMoviesResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $OMDBMoviesResponseCopyWith<OMDBMoviesResponse> get copyWith => _$OMDBMoviesResp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OMDBMoviesResponse&&const DeepCollectionEquality().equals(other.search, search)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OMDBMoviesResponse&&const DeepCollectionEquality().equals(other.search, search)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(search),totalResults,error);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(search),totalResults);
 
 @override
 String toString() {
-  return 'OMDBMoviesResponse(search: $search, totalResults: $totalResults, error: $error)';
+  return 'OMDBMoviesResponse(search: $search, totalResults: $totalResults)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $OMDBMoviesResponseCopyWith<$Res>  {
   factory $OMDBMoviesResponseCopyWith(OMDBMoviesResponse value, $Res Function(OMDBMoviesResponse) _then) = _$OMDBMoviesResponseCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'Search') List<OMDBMovie>? search,@JsonKey(name: 'totalResults') String? totalResults,@JsonKey(name: 'Error') String? error
+@JsonKey(name: 'Search') List<OMDBMovie>? search,@JsonKey(name: 'totalResults') String? totalResults
 });
 
 
@@ -65,11 +65,10 @@ class _$OMDBMoviesResponseCopyWithImpl<$Res>
 
 /// Create a copy of OMDBMoviesResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? search = freezed,Object? totalResults = freezed,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? search = freezed,Object? totalResults = freezed,}) {
   return _then(_self.copyWith(
 search: freezed == search ? _self.search : search // ignore: cast_nullable_to_non_nullable
 as List<OMDBMovie>?,totalResults: freezed == totalResults ? _self.totalResults : totalResults // ignore: cast_nullable_to_non_nullable
-as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -155,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'Search')  List<OMDBMovie>? search, @JsonKey(name: 'totalResults')  String? totalResults, @JsonKey(name: 'Error')  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'Search')  List<OMDBMovie>? search, @JsonKey(name: 'totalResults')  String? totalResults)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OMDBMoviesResponse() when $default != null:
-return $default(_that.search,_that.totalResults,_that.error);case _:
+return $default(_that.search,_that.totalResults);case _:
   return orElse();
 
 }
@@ -176,10 +175,10 @@ return $default(_that.search,_that.totalResults,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'Search')  List<OMDBMovie>? search, @JsonKey(name: 'totalResults')  String? totalResults, @JsonKey(name: 'Error')  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'Search')  List<OMDBMovie>? search, @JsonKey(name: 'totalResults')  String? totalResults)  $default,) {final _that = this;
 switch (_that) {
 case _OMDBMoviesResponse():
-return $default(_that.search,_that.totalResults,_that.error);case _:
+return $default(_that.search,_that.totalResults);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +195,10 @@ return $default(_that.search,_that.totalResults,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'Search')  List<OMDBMovie>? search, @JsonKey(name: 'totalResults')  String? totalResults, @JsonKey(name: 'Error')  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'Search')  List<OMDBMovie>? search, @JsonKey(name: 'totalResults')  String? totalResults)?  $default,) {final _that = this;
 switch (_that) {
 case _OMDBMoviesResponse() when $default != null:
-return $default(_that.search,_that.totalResults,_that.error);case _:
+return $default(_that.search,_that.totalResults);case _:
   return null;
 
 }
@@ -211,7 +210,7 @@ return $default(_that.search,_that.totalResults,_that.error);case _:
 @JsonSerializable()
 
 class _OMDBMoviesResponse implements OMDBMoviesResponse {
-  const _OMDBMoviesResponse({@JsonKey(name: 'Search') required final  List<OMDBMovie>? search, @JsonKey(name: 'totalResults') required this.totalResults, @JsonKey(name: 'Error') required this.error}): _search = search;
+  const _OMDBMoviesResponse({@JsonKey(name: 'Search') required final  List<OMDBMovie>? search, @JsonKey(name: 'totalResults') required this.totalResults}): _search = search;
   factory _OMDBMoviesResponse.fromJson(Map<String, dynamic> json) => _$OMDBMoviesResponseFromJson(json);
 
  final  List<OMDBMovie>? _search;
@@ -224,7 +223,6 @@ class _OMDBMoviesResponse implements OMDBMoviesResponse {
 }
 
 @override@JsonKey(name: 'totalResults') final  String? totalResults;
-@override@JsonKey(name: 'Error') final  String? error;
 
 /// Create a copy of OMDBMoviesResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -239,16 +237,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OMDBMoviesResponse&&const DeepCollectionEquality().equals(other._search, _search)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OMDBMoviesResponse&&const DeepCollectionEquality().equals(other._search, _search)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_search),totalResults,error);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_search),totalResults);
 
 @override
 String toString() {
-  return 'OMDBMoviesResponse(search: $search, totalResults: $totalResults, error: $error)';
+  return 'OMDBMoviesResponse(search: $search, totalResults: $totalResults)';
 }
 
 
@@ -259,7 +257,7 @@ abstract mixin class _$OMDBMoviesResponseCopyWith<$Res> implements $OMDBMoviesRe
   factory _$OMDBMoviesResponseCopyWith(_OMDBMoviesResponse value, $Res Function(_OMDBMoviesResponse) _then) = __$OMDBMoviesResponseCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'Search') List<OMDBMovie>? search,@JsonKey(name: 'totalResults') String? totalResults,@JsonKey(name: 'Error') String? error
+@JsonKey(name: 'Search') List<OMDBMovie>? search,@JsonKey(name: 'totalResults') String? totalResults
 });
 
 
@@ -276,11 +274,10 @@ class __$OMDBMoviesResponseCopyWithImpl<$Res>
 
 /// Create a copy of OMDBMoviesResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? search = freezed,Object? totalResults = freezed,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? search = freezed,Object? totalResults = freezed,}) {
   return _then(_OMDBMoviesResponse(
 search: freezed == search ? _self._search : search // ignore: cast_nullable_to_non_nullable
 as List<OMDBMovie>?,totalResults: freezed == totalResults ? _self.totalResults : totalResults // ignore: cast_nullable_to_non_nullable
-as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

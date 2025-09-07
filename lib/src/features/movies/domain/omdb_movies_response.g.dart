@@ -12,12 +12,10 @@ _OMDBMoviesResponse _$OMDBMoviesResponseFromJson(Map<String, dynamic> json) =>
           ?.map((e) => OMDBMovie.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalResults: json['totalResults'] as String?,
-      error: json['Error'] as String?,
     );
 
 Map<String, dynamic> _$OMDBMoviesResponseToJson(_OMDBMoviesResponse instance) =>
     <String, dynamic>{
       'Search': instance.search,
       'totalResults': instance.totalResults,
-      'Error': instance.error,
     };

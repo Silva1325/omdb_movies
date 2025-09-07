@@ -9,7 +9,6 @@ abstract class OMDBMoviesResponse with _$OMDBMoviesResponse {
   const factory OMDBMoviesResponse({
     @JsonKey(name: 'Search') required List<OMDBMovie>? search,
     @JsonKey(name: 'totalResults') required String? totalResults,
-    @JsonKey(name: 'Error') required String? error,
   }) = _OMDBMoviesResponse;
 
   factory OMDBMoviesResponse.fromJson(Map<String, dynamic> json) =>
@@ -17,8 +16,6 @@ abstract class OMDBMoviesResponse with _$OMDBMoviesResponse {
 }
 
 extension OMDBMoviesResponseX on OMDBMoviesResponse {
-  //@late
-  bool get isEmpty => !hasResults();
 
   bool hasResults() {
     return search != null && search!.isNotEmpty;
@@ -26,9 +23,5 @@ extension OMDBMoviesResponseX on OMDBMoviesResponse {
 
   int searchTotalResults(){
     return totalResults != null ? int.parse(totalResults!) : 0;
-  }
-
-  bool hasErrors() {
-    return error != null;
   }
 }
