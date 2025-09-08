@@ -45,7 +45,7 @@ Getting Your OMDB API Key
 Once you have this, create an .env file at the root of the project and add your key:
 
 ```bash
-export OMDB_API_KEY=your_api_key_here
+OMDB_API_KEY=your_api_key_here
 ```
 Then, run the code generator:
 
