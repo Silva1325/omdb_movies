@@ -44,13 +44,16 @@ Getting Your OMDB API Key
 
 Once you have this, create an .env file at the root of the project and add your key:
 
-```export OMDB_API_KEY=your_api_key_here```
-
+```bash
+export OMDB_API_KEY=your_api_key_here
+```
 Then, run the code generator:
 
-```dart run build_runner build -d```
+```bash
+dart run build_runner build -d
+```
 
-Note: In this project im using flutter version 3.32.2
+Note: In this project i'm using flutter version 3.32.2
 
 
 
