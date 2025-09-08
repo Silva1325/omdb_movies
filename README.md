@@ -55,7 +55,9 @@ Then, run the code generator:
 dart run build_runner build -d
 ```
 
-Note: In this project i'm using flutter version 3.32.2
+After this steps you can finally start the project
+
+**Note:** In this project i'm using flutter version 3.32.2
 
 
 
