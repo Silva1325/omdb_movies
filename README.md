@@ -42,7 +42,7 @@ Getting Your OMDB API Key
 1. Visit the OMDB API website
 2. Fill out the registration form with the required information
 3. Submit the form and check your email for the API key
-4. Important: Click the activation link in the email to enable your API key
+4. Click the activation link in the email to enable your API key
 
 Once you have this, create an .env file at the root of the project and add your key:
 
