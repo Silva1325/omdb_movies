@@ -6,7 +6,7 @@ part of 'movies_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$moviesRepositoryHash() => r'881280d2de6cb9dd75051d9b12a080da89339011';
+String _$moviesRepositoryHash() => r'dcfd2f2ce842b759a27d558b12195e4a5fe5b03e';
 
 /// See also [moviesRepository].
 @ProviderFor(moviesRepository)
@@ -24,7 +24,7 @@ final moviesRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MoviesRepositoryRef = AutoDisposeProviderRef<OMDBMoviesRepository>;
-String _$getMoviesHash() => r'2aaf0a8e344db028715ec512e342289fee9376f0';
+String _$getMoviesHash() => r'2d523a09f914a6af904b25cbff62388d2397b95c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -57,19 +57,13 @@ class GetMoviesFamily extends Family<AsyncValue<OMDBMoviesResponse>> {
   const GetMoviesFamily();
 
   /// See also [getMovies].
-  GetMoviesProvider call({
-    required ({int page, String query}) queryData,
-    CancelToken? cancelToken,
-  }) {
-    return GetMoviesProvider(queryData: queryData, cancelToken: cancelToken);
+  GetMoviesProvider call({required ({int page, String query}) queryData}) {
+    return GetMoviesProvider(queryData: queryData);
   }
 
   @override
   GetMoviesProvider getProviderOverride(covariant GetMoviesProvider provider) {
-    return call(
-      queryData: provider.queryData,
-      cancelToken: provider.cancelToken,
-    );
+    return call(queryData: provider.queryData);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -90,25 +84,18 @@ class GetMoviesFamily extends Family<AsyncValue<OMDBMoviesResponse>> {
 /// See also [getMovies].
 class GetMoviesProvider extends AutoDisposeFutureProvider<OMDBMoviesResponse> {
   /// See also [getMovies].
-  GetMoviesProvider({
-    required ({int page, String query}) queryData,
-    CancelToken? cancelToken,
-  }) : this._internal(
-         (ref) => getMovies(
-           ref as GetMoviesRef,
-           queryData: queryData,
-           cancelToken: cancelToken,
-         ),
-         from: getMoviesProvider,
-         name: r'getMoviesProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$getMoviesHash,
-         dependencies: GetMoviesFamily._dependencies,
-         allTransitiveDependencies: GetMoviesFamily._allTransitiveDependencies,
-         queryData: queryData,
-         cancelToken: cancelToken,
-       );
+  GetMoviesProvider({required ({int page, String query}) queryData})
+    : this._internal(
+        (ref) => getMovies(ref as GetMoviesRef, queryData: queryData),
+        from: getMoviesProvider,
+        name: r'getMoviesProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$getMoviesHash,
+        dependencies: GetMoviesFamily._dependencies,
+        allTransitiveDependencies: GetMoviesFamily._allTransitiveDependencies,
+        queryData: queryData,
+      );
 
   GetMoviesProvider._internal(
     super._createNotifier, {
@@ -118,11 +105,9 @@ class GetMoviesProvider extends AutoDisposeFutureProvider<OMDBMoviesResponse> {
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.queryData,
-    required this.cancelToken,
   }) : super.internal();
 
   final ({int page, String query}) queryData;
-  final CancelToken? cancelToken;
 
   @override
   Override overrideWith(
@@ -138,7 +123,6 @@ class GetMoviesProvider extends AutoDisposeFutureProvider<OMDBMoviesResponse> {
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         queryData: queryData,
-        cancelToken: cancelToken,
       ),
     );
   }
@@ -150,16 +134,13 @@ class GetMoviesProvider extends AutoDisposeFutureProvider<OMDBMoviesResponse> {
 
   @override
   bool operator ==(Object other) {
-    return other is GetMoviesProvider &&
-        other.queryData == queryData &&
-        other.cancelToken == cancelToken;
+    return other is GetMoviesProvider && other.queryData == queryData;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, queryData.hashCode);
-    hash = _SystemHash.combine(hash, cancelToken.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -170,9 +151,6 @@ class GetMoviesProvider extends AutoDisposeFutureProvider<OMDBMoviesResponse> {
 mixin GetMoviesRef on AutoDisposeFutureProviderRef<OMDBMoviesResponse> {
   /// The parameter `queryData` of this provider.
   ({int page, String query}) get queryData;
-
-  /// The parameter `cancelToken` of this provider.
-  CancelToken? get cancelToken;
 }
 
 class _GetMoviesProviderElement
@@ -183,11 +161,9 @@ class _GetMoviesProviderElement
   @override
   ({int page, String query}) get queryData =>
       (origin as GetMoviesProvider).queryData;
-  @override
-  CancelToken? get cancelToken => (origin as GetMoviesProvider).cancelToken;
 }
 
-String _$getMovieHash() => r'6dedcb293a7575a868bd3300349e0d11caa9fa59';
+String _$getMovieHash() => r'898f674c60fed3a4762dad9648a1f02b7f0e3665';
 
 /// See also [getMovie].
 @ProviderFor(getMovie)
@@ -199,25 +175,13 @@ class GetMovieFamily extends Family<AsyncValue<OMDBMovie>> {
   const GetMovieFamily();
 
   /// See also [getMovie].
-  GetMovieProvider call({
-    required String movieId,
-    required PlotType plotType,
-    CancelToken? cancelToken,
-  }) {
-    return GetMovieProvider(
-      movieId: movieId,
-      plotType: plotType,
-      cancelToken: cancelToken,
-    );
+  GetMovieProvider call({required String movieId, required PlotType plotType}) {
+    return GetMovieProvider(movieId: movieId, plotType: plotType);
   }
 
   @override
   GetMovieProvider getProviderOverride(covariant GetMovieProvider provider) {
-    return call(
-      movieId: provider.movieId,
-      plotType: provider.plotType,
-      cancelToken: provider.cancelToken,
-    );
+    return call(movieId: provider.movieId, plotType: provider.plotType);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -238,28 +202,20 @@ class GetMovieFamily extends Family<AsyncValue<OMDBMovie>> {
 /// See also [getMovie].
 class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
   /// See also [getMovie].
-  GetMovieProvider({
-    required String movieId,
-    required PlotType plotType,
-    CancelToken? cancelToken,
-  }) : this._internal(
-         (ref) => getMovie(
-           ref as GetMovieRef,
-           movieId: movieId,
-           plotType: plotType,
-           cancelToken: cancelToken,
-         ),
-         from: getMovieProvider,
-         name: r'getMovieProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$getMovieHash,
-         dependencies: GetMovieFamily._dependencies,
-         allTransitiveDependencies: GetMovieFamily._allTransitiveDependencies,
-         movieId: movieId,
-         plotType: plotType,
-         cancelToken: cancelToken,
-       );
+  GetMovieProvider({required String movieId, required PlotType plotType})
+    : this._internal(
+        (ref) =>
+            getMovie(ref as GetMovieRef, movieId: movieId, plotType: plotType),
+        from: getMovieProvider,
+        name: r'getMovieProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$getMovieHash,
+        dependencies: GetMovieFamily._dependencies,
+        allTransitiveDependencies: GetMovieFamily._allTransitiveDependencies,
+        movieId: movieId,
+        plotType: plotType,
+      );
 
   GetMovieProvider._internal(
     super._createNotifier, {
@@ -270,12 +226,10 @@ class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
     required super.from,
     required this.movieId,
     required this.plotType,
-    required this.cancelToken,
   }) : super.internal();
 
   final String movieId;
   final PlotType plotType;
-  final CancelToken? cancelToken;
 
   @override
   Override overrideWith(
@@ -292,7 +246,6 @@ class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
         debugGetCreateSourceHash: null,
         movieId: movieId,
         plotType: plotType,
-        cancelToken: cancelToken,
       ),
     );
   }
@@ -306,8 +259,7 @@ class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
   bool operator ==(Object other) {
     return other is GetMovieProvider &&
         other.movieId == movieId &&
-        other.plotType == plotType &&
-        other.cancelToken == cancelToken;
+        other.plotType == plotType;
   }
 
   @override
@@ -315,7 +267,6 @@ class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, movieId.hashCode);
     hash = _SystemHash.combine(hash, plotType.hashCode);
-    hash = _SystemHash.combine(hash, cancelToken.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -329,9 +280,6 @@ mixin GetMovieRef on AutoDisposeFutureProviderRef<OMDBMovie> {
 
   /// The parameter `plotType` of this provider.
   PlotType get plotType;
-
-  /// The parameter `cancelToken` of this provider.
-  CancelToken? get cancelToken;
 }
 
 class _GetMovieProviderElement
@@ -343,8 +291,6 @@ class _GetMovieProviderElement
   String get movieId => (origin as GetMovieProvider).movieId;
   @override
   PlotType get plotType => (origin as GetMovieProvider).plotType;
-  @override
-  CancelToken? get cancelToken => (origin as GetMovieProvider).cancelToken;
 }
 
 // ignore_for_file: type=lint
