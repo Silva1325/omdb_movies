@@ -44,7 +44,6 @@ class MoviesScreen extends ConsumerWidget {
               ),
             ),
             const MoviesSearchBar(),
-            const SizedBox(height: AppSizes.sm),
             Expanded(
               child: GridView.builder(
                 key: ValueKey(query),

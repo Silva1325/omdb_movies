@@ -53,8 +53,8 @@ class MovieDetailsInfo extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: AppSizes.md,
-                    left: AppSizes.md,
-                    right: AppSizes.md,
+                    left: AppSizes.lg,
+                    right: AppSizes.lg,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -105,7 +105,7 @@ class MovieDetailsInfo extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(AppSizes.md),
+            padding: const EdgeInsets.all(AppSizes.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

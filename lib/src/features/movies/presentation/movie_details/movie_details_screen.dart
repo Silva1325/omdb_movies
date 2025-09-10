@@ -16,7 +16,6 @@ class MovieDetailsScreen extends ConsumerWidget {
       getMovieProvider(movieId: movieId, plotType: PlotType.full),
     );
     return Scaffold(
-      //appBar: AppBar(),
       backgroundColor: theme.colorScheme.surface,
       body: responseAsync.when(
         data: (movie) {
