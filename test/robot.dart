@@ -1,0 +1,67 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:omdb_movies/main.dart';
+import 'package:omdb_movies/src/features/movies/data/movies_repository/movies_repository.dart';
+import 'goldens/golden_robot.dart';
+import 'goldens/test_data.dart';
+import 'mocks/mocks_movies.dart';
+
+class Robot {
+  final WidgetTester tester;
+  final GoldenRobot goldenRobot;
+
+  Robot(this.tester) : goldenRobot = GoldenRobot(tester);
+
+  Future<void> pumpMyApp() async {
+    final mockOMDBMoviesRepository = MockOMDBMoviesRepository();
+
+    _stubMoviesRepositoryMethods(mockOMDBMoviesRepository);
+
+    final container = ProviderContainer(
+      overrides: [
+        moviesRepositoryProvider.overrideWithValue(mockOMDBMoviesRepository),
+      ],
+    );
+
+    await tester.pumpWidget(
+      UncontrolledProviderScope(container: container, child: MyApp()),
+    );
+
+    await tester.pumpAndSettle();
+  }
+
+  void _stubGetMovies(MockOMDBMoviesRepository mockOMDBMoviesRepository) {
+    /*
+    when(
+      () => mockOMDBMoviesRepository.getMovies(
+        queryData: any(named: 'queryData'),
+        cancelToken: any(named: 'cancelToken'),
+      ),
+    ).thenAnswer((_) async => await Future.value(MockOMDBMoviesResponse()));
+    */
+    when(
+      () => mockOMDBMoviesRepository.getMovies(
+        queryData: any(named: 'queryData'),
+        cancelToken: any(named: 'cancelToken'),
+      ),
+    ).thenAnswer((_) async => MoviesData.movies());
+  }
+
+  void _stubGetMovie(MockOMDBMoviesRepository mockOMDBMoviesRepository) {
+    when(
+      () => mockOMDBMoviesRepository.getMovie(
+        movieId: any(named: 'movieId'),
+        plotType: any(named: 'plotType'),
+        cancelToken: any(named: 'cancelToken'),
+      ),
+    ).thenAnswer((_) async => await Future.value(MockOMDBMovie()));
+  }
+
+  void _stubMoviesRepositoryMethods(
+    MockOMDBMoviesRepository mockOMDBMoviesRepository,
+  ) {
+    _stubGetMovies(mockOMDBMoviesRepository);
+    _stubGetMovie(mockOMDBMoviesRepository);
+  }
+}

@@ -4,7 +4,7 @@
 
 I developed this app to demonstrate the latest APIs from popular Flutter packages including Riverpod and GoRouter. While not intended as a comprehensive movies application, it showcases common use cases and essential features that developers frequently encounter in real-world projects.
 
-<img src="images/movies_screen_iphone.png" width="200"> <img src="images/movie_details_screen_iphone.png" width="200">
+<img src="assets/images/movies_screen_iphone.png" width="200"> <img src="assets/images/movie_details_screen_iphone.png" width="200">
 
 ## Current Features
 

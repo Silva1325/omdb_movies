@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'omdb_rating.dart';
+import '../omdb_rating/omdb_rating.dart';
 
 part 'omdb_movie.freezed.dart';
 part 'omdb_movie.g.dart';

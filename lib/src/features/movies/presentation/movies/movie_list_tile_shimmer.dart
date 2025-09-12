@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../constants/sizes.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MovieListTileShimmer extends StatelessWidget {

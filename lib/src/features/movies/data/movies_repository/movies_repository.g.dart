@@ -24,7 +24,7 @@ final moviesRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MoviesRepositoryRef = AutoDisposeProviderRef<OMDBMoviesRepository>;
-String _$getMoviesHash() => r'2d523a09f914a6af904b25cbff62388d2397b95c';
+String _$getMoviesHash() => r'950c6b5e26221ceab09a782f2ff9d0bdbb09d5b9';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -1,14 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../domain/omdb_movie.dart';
+import '../../../../constants/sizes.dart';
+import '../../domain/omdb_movie/omdb_movie.dart';
 
 class MovieListTile extends StatelessWidget {
 
   final OMDBMovie movie;
   final Function() onTap;
-
 
   const MovieListTile({super.key, required this.movie, required this.onTap});
 

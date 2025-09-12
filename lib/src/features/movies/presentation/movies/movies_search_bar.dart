@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omdb_movies/src/localization/string_hardcoded.dart';
-import '../../../../utils/constants/sizes.dart';
-import 'movies_search_query_notifier.dart';
+import '../../../../constants/sizes.dart';
+import 'movies_search_query_notifier/movies_search_query_notifier.dart';
 
 class MoviesSearchBar extends ConsumerStatefulWidget {
   const MoviesSearchBar({super.key});
@@ -27,10 +27,15 @@ class _SearchBarState extends ConsumerState<MoviesSearchBar> {
       height: 90,
       child: Center(
         child: Container(
-          margin: EdgeInsets.symmetric(vertical: AppSizes.md,horizontal: AppSizes.lg),
+          margin: EdgeInsets.symmetric(
+            vertical: AppSizes.md,
+            horizontal: AppSizes.lg,
+          ),
           decoration: BoxDecoration(
             color: theme.colorScheme.surfaceContainer,
-            borderRadius: const BorderRadius.all(Radius.circular(AppSizes.borderRadiusLg)),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(AppSizes.borderRadiusLg),
+            ),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
@@ -48,14 +53,16 @@ class _SearchBarState extends ConsumerState<MoviesSearchBar> {
                         contentPadding: EdgeInsets.zero,
                         isDense: true,
                         hintText: 'Search movies'.hardcoded,
-                        hintStyle: TextStyle(color: theme.colorScheme.onSurface),
+                        hintStyle: TextStyle(
+                          color: theme.colorScheme.onSurface,
+                        ),
                       ),
                       onEditingComplete: () {
                         FocusManager.instance.primaryFocus?.unfocus();
                       },
                       onChanged: (text) => ref
-                          .read(moviesSearchQueryNotifierProvider.notifier)
-                          .setQuery(text),
+                        .read(moviesSearchQueryNotifierProvider.notifier)
+                        .setQuery(text),
                     ),
                   ),
                 ),

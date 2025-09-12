@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omdb_movies/src/api/movies_api.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../env/env.dart';
-import '../domain/omdb_movie.dart';
-import '../domain/omdb_movies_response.dart';
-import 'movies_exceptions.dart';
+import '../../../../../env/env.dart';
+import '../../domain/omdb_movie/omdb_movie.dart';
+import '../../domain/omdb_movies_response/omdb_movies_response.dart';
+import '../movies_exceptions.dart';
 
 part 'movies_repository.g.dart';
 
@@ -92,7 +92,8 @@ Future<OMDBMoviesResponse> getMovies(
   Ref ref, {
   required MoviesQueryData queryData,
 }) async {
-  final link = ref.keepAlive();
+  CancelToken cancelToken = CancelToken();
+  /*final link = ref.keepAlive();
   Timer? timer;
   CancelToken cancelToken = CancelToken();
   ref.onDispose((){
@@ -106,11 +107,11 @@ Future<OMDBMoviesResponse> getMovies(
   });
   ref.onResume((){
     timer?.cancel();
-  });
+  });*/
   final moviesRepository = ref.read(moviesRepositoryProvider);
   return await moviesRepository.getMovies(
     queryData: queryData,
-    cancelToken: null,
+    cancelToken: cancelToken,
   );
 }
 

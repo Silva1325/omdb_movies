@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../../utils/constants/sizes.dart';
+import '../../../../constants/sizes.dart';
 
 class MovieDetailsInfoShimmer extends StatelessWidget {
   const MovieDetailsInfoShimmer({super.key});

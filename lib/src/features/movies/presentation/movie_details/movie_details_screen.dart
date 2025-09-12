@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omdb_movies/src/features/movies/presentation/movie_details/movie_details_info_shimmer.dart';
-import '../../data/movies_repository.dart';
+import '../../data/movies_repository/movies_repository.dart';
 import 'movie_details_info.dart';
 
 class MovieDetailsScreen extends ConsumerWidget {

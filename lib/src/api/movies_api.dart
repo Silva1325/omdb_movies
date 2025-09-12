@@ -1,4 +1,4 @@
-import '../features/movies/data/movies_repository.dart';
+import '../features/movies/data/movies_repository/movies_repository.dart';
 
 class MoviesAPI {
   final String apiKey;

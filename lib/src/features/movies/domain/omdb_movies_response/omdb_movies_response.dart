@@ -1,6 +1,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:omdb_movies/src/features/movies/domain/omdb_movie.dart';
+import 'package:omdb_movies/src/features/movies/domain/omdb_movie/omdb_movie.dart';
 part 'omdb_movies_response.freezed.dart';
 part 'omdb_movies_response.g.dart';
 

@@ -1,9 +1,10 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:omdb_movies/src/features/movies/domain/omdb_movie.dart';
+import 'package:omdb_movies/src/features/movies/domain/omdb_movie/omdb_movie.dart';
 import 'package:omdb_movies/src/localization/string_hardcoded.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../constants/sizes.dart';
 
 class MovieDetailsInfo extends StatelessWidget {
   final OMDBMovie movie;
