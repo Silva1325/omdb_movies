@@ -23,7 +23,6 @@ class MyApp extends ConsumerWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-
     );
   }
 }

@@ -76,7 +76,7 @@ class OMDBMoviesRepository implements MoviesRepository {
     required PlotType plotType,
     CancelToken? cancelToken,
   }) => _getData(
-    uri: api.movies(movieId: movieId, plotType: plotType),
+    uri: api.movie(movieId: movieId, plotType: plotType),
     cancelToken: cancelToken,
     builder: (data) => OMDBMovie.fromJson(data),
   );

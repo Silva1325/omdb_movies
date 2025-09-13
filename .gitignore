@@ -46,3 +46,5 @@ app.*.map.json
 
 /lib/env/env.g.dart
 /.env
+/test/goldens/movies/failures/
+/coverage/

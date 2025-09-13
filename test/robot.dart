@@ -3,9 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:omdb_movies/main.dart';
 import 'package:omdb_movies/src/features/movies/data/movies_repository/movies_repository.dart';
+import 'package:omdb_movies/src/features/movies/domain/omdb_movie/omdb_movie.dart';
+import 'package:omdb_movies/src/features/movies/domain/omdb_movies_response/omdb_movies_response.dart';
+import 'features/movies/data/movies_data.dart';
 import 'goldens/golden_robot.dart';
-import 'goldens/test_data.dart';
-import 'mocks/mocks_movies.dart';
+import 'mocks.dart';
 
 class Robot {
   final WidgetTester tester;
@@ -45,7 +47,12 @@ class Robot {
         queryData: any(named: 'queryData'),
         cancelToken: any(named: 'cancelToken'),
       ),
-    ).thenAnswer((_) async => MoviesData.movies());
+    ).thenAnswer(
+      (_) async {
+        print('✅ getMovies stub hit!');
+        return OMDBMoviesResponse.fromJson(MoviesData.moviesListJsonTest());
+      },
+    );
   }
 
   void _stubGetMovie(MockOMDBMoviesRepository mockOMDBMoviesRepository) {
@@ -55,7 +62,10 @@ class Robot {
         plotType: any(named: 'plotType'),
         cancelToken: any(named: 'cancelToken'),
       ),
-    ).thenAnswer((_) async => await Future.value(MockOMDBMovie()));
+    ).thenAnswer(
+      (_) async => OMDBMovie.fromJson(MoviesData.interstellarJson()),
+    );
+
   }
 
   void _stubMoviesRepositoryMethods(

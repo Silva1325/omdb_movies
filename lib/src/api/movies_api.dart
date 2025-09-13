@@ -31,14 +31,20 @@ class MoviesAPI {
 
   Uri movies({
     MoviesQueryData? queryData,
-    String? movieId,
-    PlotType? plotType,
   }) => _buildUri(
     queryParameters: moviesParameters(
       queryData: queryData,
-      movieId: movieId,
-      plotType: plotType
     )
+  );
+
+  Uri movie({
+    String? movieId,
+    PlotType? plotType,
+  }) => _buildUri(
+      queryParameters: moviesParameters(
+          movieId: movieId,
+          plotType: plotType
+      )
   );
 
   Uri _buildUri({required Map<String, dynamic> queryParameters}) {
