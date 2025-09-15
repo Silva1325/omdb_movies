@@ -1,3 +1,4 @@
+@Timeout(duration: Duration(milliseconds: 500))
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:dio/dio.dart';
@@ -36,7 +37,6 @@ void main() {
       Then it should throw a IncorrectIdException
       ''',
       () async {
-        final moviesJson = MoviesData.moviesListJson();
         final queryData = (query: emptyMovieId, page: 1);
 
         final uri = moviesAPI.movies(queryData: queryData);
