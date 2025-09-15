@@ -24,7 +24,7 @@ final moviesRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MoviesRepositoryRef = AutoDisposeProviderRef<OMDBMoviesRepository>;
-String _$getMoviesHash() => r'950c6b5e26221ceab09a782f2ff9d0bdbb09d5b9';
+String _$getMoviesHash() => r'e2166b31bae8256d23f9591d9870bbc3c54f2f23';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -163,7 +163,7 @@ class _GetMoviesProviderElement
       (origin as GetMoviesProvider).queryData;
 }
 
-String _$getMovieHash() => r'898f674c60fed3a4762dad9648a1f02b7f0e3665';
+String _$getMovieHash() => r'faec9dedd7d15c4addd05995cfde470f1d2ac121';
 
 /// See also [getMovie].
 @ProviderFor(getMovie)
@@ -175,7 +175,10 @@ class GetMovieFamily extends Family<AsyncValue<OMDBMovie>> {
   const GetMovieFamily();
 
   /// See also [getMovie].
-  GetMovieProvider call({required String movieId, required PlotType plotType}) {
+  GetMovieProvider call({
+    required String movieId,
+    required PlotType? plotType,
+  }) {
     return GetMovieProvider(movieId: movieId, plotType: plotType);
   }
 
@@ -202,7 +205,7 @@ class GetMovieFamily extends Family<AsyncValue<OMDBMovie>> {
 /// See also [getMovie].
 class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
   /// See also [getMovie].
-  GetMovieProvider({required String movieId, required PlotType plotType})
+  GetMovieProvider({required String movieId, required PlotType? plotType})
     : this._internal(
         (ref) =>
             getMovie(ref as GetMovieRef, movieId: movieId, plotType: plotType),
@@ -229,7 +232,7 @@ class GetMovieProvider extends AutoDisposeFutureProvider<OMDBMovie> {
   }) : super.internal();
 
   final String movieId;
-  final PlotType plotType;
+  final PlotType? plotType;
 
   @override
   Override overrideWith(
@@ -279,7 +282,7 @@ mixin GetMovieRef on AutoDisposeFutureProviderRef<OMDBMovie> {
   String get movieId;
 
   /// The parameter `plotType` of this provider.
-  PlotType get plotType;
+  PlotType? get plotType;
 }
 
 class _GetMovieProviderElement
@@ -290,7 +293,7 @@ class _GetMovieProviderElement
   @override
   String get movieId => (origin as GetMovieProvider).movieId;
   @override
-  PlotType get plotType => (origin as GetMovieProvider).plotType;
+  PlotType? get plotType => (origin as GetMovieProvider).plotType;
 }
 
 // ignore_for_file: type=lint

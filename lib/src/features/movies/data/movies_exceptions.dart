@@ -18,3 +18,11 @@ class NotFoundException extends APIException {
 class UnknownException extends APIException {
   UnknownException() : super('Some error occurred');
 }
+
+class OffsetException extends APIException {
+  OffsetException() : super('Offset error');
+}
+
+class IncorrectIdException extends APIException {
+  IncorrectIdException() : super('Incorrect ID');
+}

@@ -22,14 +22,9 @@ enum PlotType {
 }
 
 abstract class MoviesRepository {
-  Future<OMDBMoviesResponse> getMovies({
-    required MoviesQueryData queryData,
-  });
+  Future<OMDBMoviesResponse> getMovies({required MoviesQueryData queryData});
 
-  Future<OMDBMovie> getMovie({
-    required String movieId,
-    required PlotType plotType,
-  });
+  Future<OMDBMovie> getMovie({required String movieId, PlotType? plotType});
 }
 
 class OMDBMoviesRepository implements MoviesRepository {
@@ -45,18 +40,27 @@ class OMDBMoviesRepository implements MoviesRepository {
   }) async {
     try {
       final response = await client.getUri(uri, cancelToken: cancelToken);
-      switch (response.statusCode) {
-        case 200:
-          return builder(response.data);
-        case 404:
-          throw NotFoundException();
+
+      final error = response.data['Error'] as String?;
+      if (error != null) {
+        switch (error) {
+          case 'Incorrect IMDb ID.':
+            throw IncorrectIdException();
+          case 'Movie not found!':
+            throw NotFoundException();
+          case 'The offset specified in a OFFSET clause may not be negative.':
+            throw OffsetException();
+        }
+      }
+
+      return builder(response.data);
+    } on DioException catch (e) {
+      switch (e.response?.statusCode) {
         case 401:
           throw InvalidApiKeyException();
         default:
           throw UnknownException();
       }
-    } catch (e) {
-      throw UnknownException();
     }
   }
 
@@ -73,7 +77,7 @@ class OMDBMoviesRepository implements MoviesRepository {
   @override
   Future<OMDBMovie> getMovie({
     required String movieId,
-    required PlotType plotType,
+    PlotType? plotType,
     CancelToken? cancelToken,
   }) => _getData(
     uri: api.movie(movieId: movieId, plotType: plotType),
@@ -92,22 +96,21 @@ Future<OMDBMoviesResponse> getMovies(
   Ref ref, {
   required MoviesQueryData queryData,
 }) async {
-  CancelToken cancelToken = CancelToken();
-  /*final link = ref.keepAlive();
+  final link = ref.keepAlive();
   Timer? timer;
   CancelToken cancelToken = CancelToken();
-  ref.onDispose((){
+  ref.onDispose(() {
     cancelToken.cancel();
     timer?.cancel();
   });
-  ref.onCancel((){
+  ref.onCancel(() {
     timer = Timer(const Duration(seconds: 30), () {
       link.close();
     });
   });
-  ref.onResume((){
+  ref.onResume(() {
     timer?.cancel();
-  });*/
+  });
   final moviesRepository = ref.read(moviesRepositoryProvider);
   return await moviesRepository.getMovies(
     queryData: queryData,
@@ -119,7 +122,7 @@ Future<OMDBMoviesResponse> getMovies(
 Future<OMDBMovie> getMovie(
   Ref ref, {
   required String movieId,
-  required PlotType plotType,
+  required PlotType? plotType,
 }) async {
   final link = ref.keepAlive();
   Timer? timer;

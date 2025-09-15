@@ -47,12 +47,10 @@ class Robot {
         queryData: any(named: 'queryData'),
         cancelToken: any(named: 'cancelToken'),
       ),
-    ).thenAnswer(
-      (_) async {
-        print('✅ getMovies stub hit!');
-        return OMDBMoviesResponse.fromJson(MoviesData.moviesListJsonTest());
-      },
-    );
+    ).thenAnswer((_) async {
+      print('✅ getMovies stub hit!');
+      return OMDBMoviesResponse.fromJson(MoviesData.moviesListJson());
+    });
   }
 
   void _stubGetMovie(MockOMDBMoviesRepository mockOMDBMoviesRepository) {
@@ -63,9 +61,8 @@ class Robot {
         cancelToken: any(named: 'cancelToken'),
       ),
     ).thenAnswer(
-      (_) async => OMDBMovie.fromJson(MoviesData.interstellarJson()),
+      (_) async => OMDBMovie.fromJson(MoviesData.interstellarMovieJson()),
     );
-
   }
 
   void _stubMoviesRepositoryMethods(

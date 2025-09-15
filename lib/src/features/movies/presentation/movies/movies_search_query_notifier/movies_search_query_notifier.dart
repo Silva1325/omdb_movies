@@ -14,7 +14,7 @@ class MoviesSearchQueryNotifier extends _$MoviesSearchQueryNotifier {
     ref.onDispose(() {
       _debounceTimer?.cancel();
     });
-    return 'avenge';
+    return 'Avenge';
   }
 
   void setQuery(String query) {

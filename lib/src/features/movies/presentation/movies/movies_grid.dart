@@ -11,13 +11,12 @@ import 'movie_list_tile_shimmer.dart';
 import 'movies_search_query_notifier/movies_search_query_notifier.dart';
 
 class MoviesGrid extends ConsumerWidget {
-
   static const pageSize = 10;
 
   const MoviesGrid({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final query = ref.watch(moviesSearchQueryNotifierProvider);
     final responseAsync = ref.watch(
       getMoviesProvider(queryData: (page: 1, query: query)),
@@ -50,7 +49,7 @@ class MoviesGrid extends ConsumerWidget {
             final movie = response.search![indexInPage];
             return MovieListTile(
               movie: movie,
-              onTap: () => _onMovieListTileTap(context,movie),
+              onTap: () => _onMovieListTileTap(context, movie),
             );
           },
           error: (err, stack) => const SizedBox(),
@@ -60,12 +59,10 @@ class MoviesGrid extends ConsumerWidget {
     );
   }
 
-  void _onMovieListTileTap(BuildContext context,OMDBMovie movie){
+  void _onMovieListTileTap(BuildContext context, OMDBMovie movie) {
     context.goNamed(
       AppRoute.movie.name,
-      pathParameters: {
-        'movie_id': movie.imdbId ?? '',
-      },
+      pathParameters: {'movie_id': movie.imdbId ?? ''},
     );
   }
 }

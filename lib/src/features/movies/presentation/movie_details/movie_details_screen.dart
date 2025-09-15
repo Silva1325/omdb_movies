@@ -13,7 +13,7 @@ class MovieDetailsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final responseAsync = ref.watch(
-      getMovieProvider(movieId: movieId, plotType: PlotType.full),
+      getMovieProvider(movieId: movieId, plotType: null),
     );
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
