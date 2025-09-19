@@ -48,7 +48,6 @@ class Robot {
         cancelToken: any(named: 'cancelToken'),
       ),
     ).thenAnswer((_) async {
-      print('✅ getMovies stub hit!');
       return OMDBMoviesResponse.fromJson(MoviesData.moviesListJson());
     });
   }

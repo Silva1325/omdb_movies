@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omdb_movies/src/api/movies_api.dart';
+import 'package:omdb_movies/src/constants/duration.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../env/env.dart';
 import '../../domain/omdb_movie/omdb_movie.dart';
@@ -104,7 +105,7 @@ Future<OMDBMoviesResponse> getMovies(
     timer?.cancel();
   });
   ref.onCancel(() {
-    timer = Timer(const Duration(seconds: 30), () {
+    timer = Timer(AppDuration.providerCacheDuration, () {
       link.close();
     });
   });
@@ -132,7 +133,7 @@ Future<OMDBMovie> getMovie(
     cancelToken.cancel();
   });
   ref.onCancel(() {
-    timer = Timer(const Duration(seconds: 30), () {
+    timer = Timer(AppDuration.providerCacheDuration, () {
       link.close();
     });
   });
