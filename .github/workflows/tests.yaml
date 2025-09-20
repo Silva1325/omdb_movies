@@ -9,7 +9,7 @@ jobs:
     - name: 'Create env file'
       run: |
         touch .env
-        echo omdbApiKey=${{ secrets.OMDB_API_KEY }} >> .env
+        echo omdbApiKey=${{ secrets.OMDB_API_KEY }} > .env
         cat .env
     - name: 'Get dependencies'
       run: flutter pub get
