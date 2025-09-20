@@ -6,4 +6,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: subosito/flutter-action@v1
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo OMDB_API_KEY=${{ secrets.OMDB_API_KEY }} >> .env
+        cat .env
     - run: flutter test
