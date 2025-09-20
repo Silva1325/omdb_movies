@@ -9,8 +9,10 @@ jobs:
     - name: 'Create env file'
       run: |
         touch .env
-        echo OMDB_API_KEY=${{ secrets.OMDB_API_KEY }} >> .env
+        echo omdbApiKey=${{ secrets.OMDB_API_KEY }} >> .env
         cat .env
+    - name: 'Get dependencies'
+      run: flutter pub get
     - name: 'Generate code'
       run: flutter packages pub run build_runner build --delete-conflicting-outputs
     - run: flutter test
